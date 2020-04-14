@@ -1,0 +1,569 @@
+
+
+h1, h2, h3, p, a, div, fieldset{
+    font-family: 'Slabo 27px', serif;
+  
+  }
+  
+  a{
+    text-decoration: none;
+  }
+  
+  body{
+    margin: 0;
+    padding: 0;
+  }
+  h1{
+      font-size: 3em;
+      text-align: center;
+      font-weight: 100;
+      padding-bottom: 3px;
+  }
+
+  /******************
+        Buttons
+  *******************/
+  .delete{
+    background-color: #7a1a1a;
+    color: #fff;
+    padding: 20px 10px;
+    font-size: 1.5em;
+    margin: 30px 0;
+    float: right;
+    border: none;
+    }
+
+    .submit{
+      background-color: #000;
+      color: #fff;
+      padding: 20px 10px;
+      font-size: 1.5em;
+      float: right;
+      border: none;
+      }
+
+  .delete:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1);
+    cursor: pointer; 
+  }
+
+  /******************
+        Header 
+  *******************/
+  
+  header {
+    overflow: hidden;
+    background-color: #06301b;
+    padding: 0px 14%;
+    height: 12vh;
+    color: #fff;
+    margin: 0px;
+  }
+  
+  .helper {
+    display: inline-block;
+    height: 100%;
+    vertical-align: middle;
+  }
+  
+  header .header-right a {
+    float: left;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 5vh 40px;
+    text-decoration: none;
+    font-size: 22px; 
+    font-weight: bold;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  header img{
+    vertical-align: middle;
+      max-height:8vh;
+  }
+  header a.logo {
+    font-size: 25px;
+    font-weight: bold;
+  }
+  
+  header a:hover {
+    color: rgb(214, 212, 212);
+  }
+  
+  .header-right {
+    float: right;
+  
+  }
+  
+  
+  
+  
+  /********************
+      Index Page
+  ********************/
+  
+  
+  main{
+      width: 95%;
+      margin: auto;
+      max-width: 1600px;
+      margin-top: 50px;
+  
+  }
+  .index-left{
+    width: 25%;
+    float: left;
+  }
+  .index-right{
+    width: 70%;
+    float: right;
+  
+  }
+  .viewScorecard-Right{
+    float: right;
+    text-align: right;
+  }
+  
+  .index-stats-box{
+    margin: 55px 20px 0 20px;
+    padding: 0 0 20px 0;
+    border: 1px solid rgb(158, 158, 158);
+    box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    text-align: center;
+  }
+  
+  .index-stats-box h3{
+    font-size: 32px;
+    padding: 20px; 
+    margin: 0;
+    font-weight: 100;
+  }
+  
+  .index-stats-box .hcp{
+    background-color: #06301b;
+    color: #fff;
+    padding-top: 10px;
+    font-weight: 800;
+    font-size: 28px;
+  }
+  .index-stats-box .hcp p{
+    padding: 0px;
+    text-align: center;
+    margin: 0;
+  }
+  
+  .index-stats-box .hcp small{
+    font-size: 14px;
+    padding: 0px;
+    margin: 0;
+  }
+  
+  .index-stats-box a{
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 20px;
+    cursor: pointer;
+    padding: 20px;
+  }
+  
+  
+  
+  .flex-container {
+    box-shadow: 3px 3px 5px #888888;
+    display: flex;
+    flex-wrap: nowrap;
+    height: 5EM;
+    justify-items: center;
+    align-items: center;
+    border: 1px solid rgb(100, 100, 100);
+    background-color: rgb(255, 255, 255);
+    }
+    
+  .none{
+    padding: 0;
+    border: none;
+    height: 3em;
+    box-shadow: none;
+  }
+  
+  .none .items, .none .courseName{
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .link{
+    color: #017dab;
+    font-weight: bold;
+  }
+    
+    .flex-container > div {
+      background-color: rgb(255, 255, 255);
+      margin: 1px;
+      text-align: center;
+      line-height: 40px;
+      font-size: 30px;
+    }
+  
+    .courseName{
+        flex-basis: 42%;
+    }
+    .whichcourse > .view{
+      flex-basis: 40%;
+    }
+
+    .items{
+        color: rgb(0, 0, 0);
+        flex-basis: 12%;
+  
+    }
+  
+    .icon{
+      height: 40px;
+      margin-top: 5px;
+    }
+
+    /* 
+    Pagination 
+    The css classes are premade by listrak
+    use inspect element to see them
+    */
+    .pagination{
+        text-align: center;
+        font-size: 30px;
+    }
+   .page-item{
+     display: inline;
+     padding: 10px;
+     color: #000;
+   } 
+   .page-item a{
+     color: #000;
+   }
+
+   
+  /***************************
+      Number of Holes
+  ***************************/
+
+  .holes-img{
+    height: 30vh;
+  }
+
+  .holes-width{
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  h2{
+      text-align: center;
+      font-size: 40px;
+      padding: 20px;
+    }
+    .holes-box{
+      width: 47%;
+      height: 50vh;
+      background-image: url("pages/images/golfbag.png");
+      background-color: #144d30;
+      color: #fff;
+      font-size: 20px;
+      background-position: center;
+      background-repeat: no-repeat;
+    border: 14px solid #06301b;
+      float: left;
+      text-align: center;
+    }
+    
+  .holes-box input[type=submit]{
+    color: #fff;
+    font-size: 30px;
+    background-color: #06301b;
+    border: none;
+  }
+  
+   .right input[type=submit]{
+    color: #fff;
+    font-size: 30px;
+    background-color: #300e1f;
+    border: none;
+  }
+  
+    .right{
+      float: right;
+      background-image: url("pages/images/golfcart.png");
+      background-color: #4d1431;
+    }
+    
+    .holes-box input{
+      -webkit-appearance: none;
+      background-color: #fff;
+      padding: 10px 30px;
+      margin:30px 0px 0px 0px;
+    }
+    @media only screen and (max-width: 1000px) {
+     
+      .right{
+        float: left;
+      }
+      .holes-box{
+        width: 96%;
+    }
+    
+    }
+  
+  
+  
+    
+  /***************************
+      Pages/View 
+  ***************************/
+    .scorecard-top .left{
+    float: left;
+  }
+  
+  .scorecard-top > .rightText{
+  float: right;
+  }
+  .scorecard-top div{
+    font-size: 32px;
+  }
+  .scorecard-top{
+    border: 1px solid black;
+    padding: 20px 6% 60px 6%;
+  }
+  .scorecard-top h2{
+    padding: 0px;
+    margin: 60px 0 0 0;
+    color: #313131;
+    font-size: 60px;
+  }
+  
+  .flex-container-scorecard {
+      display: flex;
+      flex-wrap: nowrap;
+      background-color: rgb(0, 0, 0);
+    }
+    
+    .flex-container-scorecard  > .hole {
+      background-color: #1a6d43;
+      color: #fff;
+    }
+  
+    .flex-container-scorecard  > .par {
+      background-color: #a7aa82;
+    }
+  
+    .flex-container-scorecard  > div {
+      background-color: rgb(255, 255, 255);
+      margin: 1px;
+      text-align: center;
+      line-height: 60px;
+      font-size: 30px;
+    }
+    
+    .items-scorecard {
+        flex-basis: 8%;
+  
+    }
+    .items-info {
+      flex-basis: 20%;
+  
+  }
+  
+  /***************************
+      Course Data
+  ***************************/
+  
+  .alignCenter{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+  }
+  
+  .courseInfoName{
+    font-size: 26px;
+    padding: 0 50px 50px 0;
+  }
+  
+ 
+  
+  .items-scorecard input[type=number]{
+    width: 100%;
+    height: 100%;
+    text-align: center; 
+    padding: 0;
+    margin: 0;
+  }
+  
+  
+  /***************************
+      Which Course
+  ***************************/
+  .whichcourse{
+    width: 20%;
+    margin:20px;
+    float: left; /* Change to css grids. Then you can remove clear float div */
+  }
+  
+  #searchform{
+    text-align: center;
+    margin: 40px;
+    height: 40px;
+
+  }
+
+  .centerederror{
+    text-align: center;
+    color: red;
+    font-weight: bold;
+  }
+
+  #searchform input, label, input[type=date], input[type=text],  input[type=number], #searchform button{
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 20px;
+    border-radius: 0;
+    -webkit-appearance: none;
+  }
+  input[type=date], input[type=text],  input[type=number]{
+    -moz-box-sizing:border-box;
+    -webkit-box-sizing:border-box;
+    box-sizing:border-box;
+    width: 300px;
+  }
+
+  #searchform button{
+    color: #fff;
+    background-color: #000;
+    border: 1px solid #000;
+    cursor: pointer; 
+  }
+
+  label{
+    padding-right: 50px;
+  }
+
+  .clearfloat{
+    content: "";
+    clear: both;
+    display: table;
+  }
+  
+  /***************************
+      Sign Up
+  ***************************/
+  
+  .signup{
+    margin: 100px auto;
+    padding: 0% 5% 3% 5%;
+    width: 100%; 
+    max-width: 400px;
+    border: 1px solid rgb(158, 158, 158);
+    box-shadow: 2px 2px 10px #888888;
+  }
+  
+  .signup input{
+    width: 100%;
+    font-size: 16px;
+    padding: 10px 5px;
+    margin: 20px 0;
+  }
+  
+  .signup button{
+    margin: 20px auto 0px auto;
+    width: 80%;
+    font-size: 22px;
+    border-radius: 30px;
+    padding: 10px 5px;
+    color: #fff;
+    border: none;
+    background-color: #06301b;
+  }
+  
+  /***************************
+      About
+  ***************************/
+  .about-container{
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 55vh;
+    justify-content: flex-start;
+    display: flex;
+    max-width: 1800px;
+    margin: 0 auto;
+    color:rgb(41, 41, 41);
+  
+  }
+  
+  .about-container .item h2{
+    font-weight: 100;
+    font-size: 50px;
+    text-align: center;
+    padding: 0 20%;
+  }
+  
+  
+  .about-container .item{
+    width: 60%;
+    text-align: center;
+  }
+  .about-container .imag{
+    width: 40%;
+    
+  }
+  
+  .about-container .imag img{
+    width: 100%;
+    padding: 15% 0%;
+  
+  }
+  
+  .signup-button{
+    color:rgb(24, 24, 24);
+    border: 4px solid #1a6d43;
+    padding: 10px 50px; 
+    text-decoration:none; 
+    font-size: 27px;
+  }
+  .center{
+    margin: 15% 0; 
+  }
+
+
+/*********************
+    Create Scorecard
+*********************/
+#toggleTees{
+  display: none;
+}
+
+
+/*********************
+    Advanced Stats
+*********************/
+.advancedstats{
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+    grid-template-rows: auto;
+}
+
+.advancedstats fieldset{
+  margin: 20px;
+  text-align: center;
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.advancedstats h3{
+  font-size: 44px;
+  padding: 0;
+  margin: 20px;
+}
+
+
+
+
