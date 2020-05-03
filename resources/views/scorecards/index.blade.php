@@ -12,12 +12,12 @@
         </div>
         <br>
         <div class="hcp">
-            <p>{{ $bestEighteenHoleScore }}</p>
+            <p>{{$bestEighteenHoleScore  > 0 ? "+":""}}{{$bestEighteenHoleScore == null ? "No 9 Hole Games Played" : $bestEighteenHoleScore}}</p>
             <small>Best Score 18 Holes</small>
         </div>
         <br>
         <div class="hcp">
-            <p>{{ $bestNineHoleScore }}</p>
+            <p>{{$bestNineHoleScore > 0 ? "+":""}}{{$bestNineHoleScore == null ? "No 9 Hole Games Played" : $bestNineHoleScore}}</p>
             <small>Best Score 9 Holes</small>
         </div>
         <br>

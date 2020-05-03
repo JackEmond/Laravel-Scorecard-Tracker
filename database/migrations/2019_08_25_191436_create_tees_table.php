@@ -18,8 +18,8 @@ class CreateTeesTable extends Migration
             $table->bigIncrements('id');
             $table->string('colour');
         
-            $table->smallInteger('rating');
-            $table->smallInteger('slope');
+            $table->float('rating', 5, 2);;
+            $table->float('slope',5,2);
 
             $table->unsignedInteger('course_id');
             $table->timestamps();

@@ -8,9 +8,9 @@
     
     <div id="searchform">
         <form action="search" method="get" id="search">
-            <label for="search">Search:</label><input type="search" name="search" value="{{$search}}">
+            <label for="search">Search Courses:</label><input type="search" name="search" value="{{$search}}">
             <input type="hidden" name="numholes" value="{{$numholes}}">
-            <button type="submit">Submit</button>
+            <button type="submit">Search</button>
         </form>
     </div>
     

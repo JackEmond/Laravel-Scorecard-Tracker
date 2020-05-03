@@ -17,12 +17,12 @@
 
         <div class="alignCenter">
             <label for="date_played">Date Played:</label><input type="date" name="date_played" value="{{old('date_played')}}"><br>
-            <label for="colour">Course Tees:</label><input type="text" name="colour" value="{{old('colour')}}" /><br>
+            <label for="colour">Course Tees:</label><input type="text" name="colour"  value="{{old('colour')}}" /><br>
         </div>
         
         <div class="alignCenter">
-            <label for="rating">Tee Rating:</label><input type="number" name="rating" value="{{old('rating')}}" /><br>
-            <label for="slope"> Slope:</label><input type="number" name="slope" value="{{old('slope')}}" /><br>
+            <label for="rating">Tee Rating:</label><input type="number" step=".01" name="rating" value="{{old('rating')}}" /><br>
+            <label for="slope"> Slope:</label><input type="number"  step=".01" name="slope" value="{{old('slope')}}" /><br>
         </div>
     <br>
     <br>

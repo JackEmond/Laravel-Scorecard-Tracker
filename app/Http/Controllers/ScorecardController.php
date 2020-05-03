@@ -26,7 +26,6 @@ class ScorecardController extends Controller
         $bestNineHoleScore = AdvancedStats::bestScore9Holes($listOfScorecards);
         $bestEighteenHoleScore = AdvancedStats::bestScore18Holes($listOfScorecards);
         $handicap = Handicap::calculateHandicap($listOfScorecards);
-
         return view('scorecards.index', compact('listOfScorecards','bestNineHoleScore','bestEighteenHoleScore', 'handicap' ));
     }
 
@@ -38,13 +37,13 @@ class ScorecardController extends Controller
     public function selectaCourse($numholes)
     {
         $listOfCourses = Course::where('number_of_holes', $numholes)->paginate(12);
-      
+       
         return view('scorecards.whichcourse',[
             'listOfCourses' => $listOfCourses,
             'numholes' => $numholes,
             'error' => "",
             'search' => ''
-        ]);
+        ]); 
     }
 
     public function search(Request $request) #search bar on what course did you play page
