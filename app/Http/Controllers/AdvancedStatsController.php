@@ -16,30 +16,28 @@ class AdvancedStatsController extends Controller
     {  
 
         $listOfScorecards = Scorecard::latest('date_played')->paginate(10);
+        
         count($listOfScorecards) == 0 ? abort(404) : "";
 
         AdvancedStats::storeFinalScore($listOfScorecards);
 
-        $avgscore = AdvancedStats::averageScore($listOfScorecards);
+        return view('advancedstats.index', [
 
-        $eighteenHoleChart = AdvancedStatsCharts::ScoreProgress($listOfScorecards, 18);
-        $nineHoleChart = AdvancedStatsCharts::ScoreProgress($listOfScorecards, 9);
-        $handicapChart   = AdvancedStatsCharts::handicapChart($listOfScorecards);        
+            'handicap' =>               Handicap::calculateHandicap($listOfScorecards),
+            
+            'bestscore9holes' =>        AdvancedStats::bestScore9Holes($listOfScorecards),
+            'bestscore18holes'=>        AdvancedStats::bestScore18Holes($listOfScorecards),
+            'favouritecourse' =>        AdvancedStats::favouriteCourse($listOfScorecards),
+            'totalnumberofstrokes'=>    AdvancedStats::TotalNumberOfStrokes($listOfScorecards),
+            'totalnumberofpars' =>      AdvancedStats::NumberOfTimesaPlayerScoredaSpecificScore($listOfScorecards, 0),
+            'totalnumberofbirdies' =>   AdvancedStats::NumberOfTimesaPlayerScoredaSpecificScore($listOfScorecards, -1),
+            'totalnumberofeagles' =>    AdvancedStats::NumberOfTimesaPlayerScoredaSpecificScore($listOfScorecards, -2),
+            'numberofHoleinOnes' =>     AdvancedStats::HoleinOnes($listOfScorecards),
+            'avgscore'=>                AdvancedStats::averageScore($listOfScorecards),
 
-        #DB::connection()->enableQueryLog();
-        #dd(DB::getQueryLog());
-
-
-        return view('advancedstats.index', compact('avgscore', 'eighteenHoleChart', 'nineHoleChart', 'handicapChart'), [
-            'handicap' => Handicap::calculateHandicap($listOfScorecards),
-            'bestscore9holes' => AdvancedStats::bestScore9Holes($listOfScorecards),
-            'bestscore18holes'=> AdvancedStats::bestScore18Holes($listOfScorecards),
-            'favouritecourse' =>  AdvancedStats::favouriteCourse($listOfScorecards),
-            'totalnumberofstrokes'=>AdvancedStats::TotalNumberOfStrokes($listOfScorecards),
-            'totalnumberofpars' => AdvancedStats::NumberOfTimesaPlayerScoredaSpecificScore($listOfScorecards, 0),
-            'totalnumberofbirdies' =>  AdvancedStats::NumberOfTimesaPlayerScoredaSpecificScore($listOfScorecards, -1),
-            'totalnumberofeagles' =>  AdvancedStats::NumberOfTimesaPlayerScoredaSpecificScore($listOfScorecards, -2),
-            'numberofHoleinOnes' => AdvancedStats::HoleinOnes($listOfScorecards)
+            'eighteenHoleChart' =>      AdvancedStatsCharts::ScoreProgress($listOfScorecards, 18),
+            'nineHoleChart' =>          AdvancedStatsCharts::ScoreProgress($listOfScorecards, 9),
+            'handicapChart'   =>        AdvancedStatsCharts::handicapChart($listOfScorecards)  
         ]);
 
     }
