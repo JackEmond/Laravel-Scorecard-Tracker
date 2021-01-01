@@ -10,7 +10,11 @@
     <section class="advancedstats">
     <fieldset>
         <legend>Best Score 9 Holes</legend>
-        <h3>{{$bestscore9holes == null ? "No 9 Hole Games Played" : $bestscore9holes}}</h3>
+        @if($bestscore9holes == null)
+            <h4>No 9 Hole Games Played</h4>
+        @else
+            <h3>{{$bestscore9holes}}</h3>
+        @endif
     </fieldset>
 
     <fieldset>
@@ -20,12 +24,16 @@
 
     <fieldset>
         <legend>Best Score 18 Holes</legend>
-        <h3>{{$bestscore18holes == null ? "No 18 Hole Games Played" : $bestscore18holes}}</h3>
+        @if($bestscore18holes == null)
+            <h4>No 9 Hole Games Played</h4>
+        @else
+            <h3>{{$bestscore18holes}}</h3>
+        @endif
     </fieldset>
     
     <fieldset>
         <legend>Favourite Course</legend>
-    <h3>{{ $favouritecourse }}</h3>
+    <h4>{{ $favouritecourse }}</h4>
     </fieldset>
 
     <fieldset>
@@ -69,30 +77,36 @@
         </fieldset>
         
         @if ($nineHoleChart->container()->chart->labels != [])
-            <div style=" height: 250px;" >
+        <fieldset style="height: 250px;">
+            <legend>9 Hole Score Progress</legend>
+            <div class="chart">
                 {!! $nineHoleChart->container() !!}
-                <h3>9 Hole Score Progress</h3>
             </div>
+        </fieldset>   
         @endif
 
         @if ($eighteenHoleChart->container()->chart->labels != [])
-            <div style="height: 250px;" >
+        <fieldset style="height: 250px;">
+            <legend>18 Hole Score Progress</legend>
+            <div class="chart">
                 {!! $eighteenHoleChart->container() !!}
-                <h3>18 Hole Score Progress</h3>
             </div>
+        </fieldset>   
         @endif
 
         @if ($handicapChart->container()->chart->labels != [])
-        <div style="height: 250px;" >
-            {!! $handicapChart->container() !!}
-            <h3>Handicap Progress</h3>
-        </div>
+        <fieldset style="height: 250px;">
+            <legend>Handicap Progress</legend>
+            <div class="chart">
+                {!! $handicapChart->container() !!}
+            </div>
+        </fieldset>   
         @endif
 
         {!! $nineHoleChart->script() !!}
         {!! $handicapChart->script() !!}
         {!! $eighteenHoleChart->script() !!}
 
-        </section>
+    </section>
 
 @endsection

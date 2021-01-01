@@ -26,6 +26,7 @@ class ScorecardController extends Controller
         $bestNineHoleScore = AdvancedStats::bestScore9Holes($listOfScorecards);
         $bestEighteenHoleScore = AdvancedStats::bestScore18Holes($listOfScorecards);
         $handicap = Handicap::calculateHandicap($listOfScorecards);
+
         return view('scorecards.index', compact('listOfScorecards','bestNineHoleScore','bestEighteenHoleScore', 'handicap' ));
     }
 

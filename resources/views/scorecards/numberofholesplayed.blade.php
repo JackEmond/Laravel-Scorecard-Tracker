@@ -1,7 +1,6 @@
 @extends('layout')
 
 @section('content')
-
 <h2>How many holes did you play?</h2>
 
 <div class="holes-width">

@@ -7,7 +7,6 @@ class Handicap{
     
     public static function calculateHandicap($listOfScorecards)
     {
-
         $differentials = (new self)->calculateDifferentials($listOfScorecards);
         $handicap = (new self)->yourHandicap($differentials);
        return $handicap;
@@ -21,32 +20,20 @@ class Handicap{
         
         for($i=0; count($eighteenHoleDifferentials)<=$numberOfDiff && $i< $arraySize; $i++)
         {
-
             if($listOfScorecards[$i]->hole_ten == null) //If its a 9 hole score
             {
                 $nineHoleDifferentials[] = (113/$listOfScorecards[$i]->tee->slope) * (ScoreTotals::scoreTotal($listOfScorecards[$i]) - $listOfScorecards[$i]->tee->rating);
                 
-                if(count($nineHoleDifferentials) == 2)
+                if(count($nineHoleDifferentials) == 2) // combine 2 ninehole differentials to make a eighteen hole differential
                 {
                     array_push($eighteenHoleDifferentials, $nineHoleDifferentials[0] + $nineHoleDifferentials[1]);
                 }
             }
-            else //its an eighteen hole score
+            else if($listOfScorecards[$i]->hole_ten != null)//its an eighteen hole score
             {
-                #$eighteenHoleDifferentials[] = (113/$listOfScorecards[$i]->tee->slope) * (ScoreTotals::scoreTotal($listOfScorecards[$i]) - $listOfScorecards[$i]->tee->rating);
-
-                $b = ScoreTotals::scoreTotal($listOfScorecards[$i]); 
-                
-                $c = $listOfScorecards[$i]->tee->rating;
-                #dd(DB::getQueryLog()); #I think the issue is your not inner joining the tee table
-                
-
-                $a = (113/$listOfScorecards[$i]->tee->slope); 
-
+                $eighteenHoleDifferentials[] = (113/$listOfScorecards[$i]->tee->slope) * (ScoreTotals::scoreTotal($listOfScorecards[$i]) - $listOfScorecards[$i]->tee->rating);
             }
-           
         }
-
         return $eighteenHoleDifferentials;
     }
 
@@ -59,65 +46,53 @@ class Handicap{
         # 20 games played take your lowest 8 differentials dont remove anything etc
         $countOfDifferentials = count($yourDifferentials);
 
-        #change to switch statement
-        if($countOfDifferentials < 3)
+        switch($countOfDifferentials)
         {
-            $gamesRemaining = 3 - $countOfDifferentials;
-            return 'Play '. strval($gamesRemaining) .' more game(s)';
-        }
-        elseif($countOfDifferentials == 3 )
-        {
-            $handicap = min($yourDifferentials) - 2;
-        }
-        elseif($countOfDifferentials == 4)
-        {
-            $handicap = min($yourDifferentials) - 1;
-        }
-        elseif($countOfDifferentials == 5)
-        {
-            $handicap = min($yourDifferentials);
-        }
-        elseif($countOfDifferentials  == 6)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 2, -1);
-        }
-        elseif($countOfDifferentials  == 7 or $countOfDifferentials == 8)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 2);
-        }
-        elseif($countOfDifferentials  >= 9 && $countOfDifferentials <= 11)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 3);
-
-        }
-        elseif($countOfDifferentials  >= 12 && $countOfDifferentials <= 14)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 4);
-
-        }
-        elseif($countOfDifferentials  == 15 && $countOfDifferentials == 16)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 5);
-
-        }
-        elseif($countOfDifferentials  == 17 && $countOfDifferentials == 18)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 6);
-
-        }
-        elseif($countOfDifferentials  == 19)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 7);
-
-        }
-        elseif($countOfDifferentials  == 20)
-        {
-            $handicap = (new self)->determineHandicap($yourDifferentials, 8);
-
-        }
-        else
-        {
-            return "error";
+            case 1:
+            case 2:
+                $gamesRemaining = 3 - $countOfDifferentials;
+                return 'Play more games';
+            break;
+            case 3:
+                $handicap = min($yourDifferentials) - 2;
+                break;
+            case 4:
+                $handicap = min($yourDifferentials) - 1;
+                break;
+            case 5:
+                $handicap = min($yourDifferentials);
+                break;
+            case 6:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 2, -1);
+                break;
+            case 7:
+            case 8:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 2);
+                break;
+            case 9:
+            case 10:
+            case 11:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 3);
+                break;
+            case 12:
+            case 13:
+            case 14:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 4);
+                break;
+            case 15:
+            case 16:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 5);
+                break;
+            case 17:
+            case 18:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 6);
+                break;
+            case 19:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 7);
+                break;
+            case 20:
+                $handicap = (new self)->determineHandicap($yourDifferentials, 8);
+                break;
         }
         return round($handicap, 1);
     }

@@ -46,10 +46,9 @@ class AdvancedStatsCharts{
     public static function handicapChart($listOfScorecards) 
     {
 
-        #Calculate the differentials. Once you get the differentials calculate
         $differentials = Handicap::calculateDifferentials($listOfScorecards, 40);
         
-        $handicap = $b = [];
+        $dataset = $labels = [];
 
         for($x = 0; $x < $differentials && $x <= 10; $x++)
         {
@@ -57,8 +56,8 @@ class AdvancedStatsCharts{
 
             if(!is_string($thishandicap))
             {
-                $handicap[$x] = $thishandicap;
-                $b[$x] = $x+1;
+                $dataset[$x] = $thishandicap;
+                $labels[$x] = $x+1;
                 array_shift($differentials);
             } 
             else
@@ -67,14 +66,14 @@ class AdvancedStatsCharts{
             }
         }
 
-        array_reverse($handicap);
-
          # Create the Chart using Laravel Charts
          $ScoreProgressChart = new AdvancedStatsChart;
-         $ScoreProgressChart ->labels($b)
-                     ->dataset('', 'line', array_reverse($handicap))
-                     ->fill(false)
-                     ->color("#000");
+         
+         $ScoreProgressChart    ->labels($labels)
+                                ->dataset('', 'line', $dataset)
+                                ->fill(false)
+                                ->color("#000");
+                                
          $ScoreProgressChart->displaylegend(false);
  
          return $ScoreProgressChart;

@@ -11,7 +11,7 @@
     {{ csrf_field() }}
     <script src="{{ asset('js/toggle.js') }}"></script>
 
-
+    <!-- Course Name and Information -->
     @if ($courseid == "newCourse")
         <div class="alignCenter courseInfoName">Course Name:<input type="text" name="course_name" value="{{old('course_name')}}" /><br></div>
 
@@ -30,8 +30,6 @@
     @endif
 
     @if ($courseid != "newCourse")
-
-    
         <div class="alignCenter courseInfoName">{{ $courseid->course_name }}</div>
 
         Date Played: <input type="date" name="date_played" value="{{old('date_played')}}"/><br>
@@ -53,24 +51,28 @@
 
     @endif
 
-    <!--<input name="course_id" type="hidden" value="1">-->
     <input name="number_of_holes" type="hidden" value="{{$numholes}}">
+        
 
-        <!-- Holes 1-9 -->
-        <div class="flex-container-scorecard">
-            <div class="items-info hole">Hole #</div>
-            <div class="items-scorecard hole">1</div>
-            <div class="items-scorecard hole">2</div>
-            <div class="items-scorecard hole">3</div>
-            <div class="items-scorecard hole">4</div>
-            <div class="items-scorecard hole">5</div>
-            <div class="items-scorecard hole">6</div>
-            <div class="items-scorecard hole">7</div>
-            <div class="items-scorecard hole">8</div>
-            <div class="items-scorecard hole">9</div>
-            <div class="items-scorecard hole">OUT</div>
-        </div>
-    
+    <!--=-------------------
+        Scorecard 
+    ----------------------->
+
+    <!-- Holes 1-9 -->
+    <div class="flex-container-scorecard">
+        <div class="items-info hole">Hole #</div>
+        <div class="items-scorecard hole">1</div>
+        <div class="items-scorecard hole">2</div>
+        <div class="items-scorecard hole">3</div>
+        <div class="items-scorecard hole">4</div>
+        <div class="items-scorecard hole">5</div>
+        <div class="items-scorecard hole">6</div>
+        <div class="items-scorecard hole">7</div>
+        <div class="items-scorecard hole">8</div>
+        <div class="items-scorecard hole">9</div>
+        <div class="items-scorecard hole">OUT</div>
+    </div>
+
     <!-- What is your score for holes 1 - 9 -->
     <div class="flex-container-scorecard">
         <div class="items-info">Score</div>
@@ -106,6 +108,7 @@
         </div>
     </div>
 
+    <!-- What is Par for holes 1 - 9 -->
     @if ($courseid == "newCourse")
         <div class="flex-container-scorecard">
             <div class="items-info par"> Par </div>  
@@ -140,6 +143,7 @@
         </div> 
     @endif
 
+    <!-- Show Par for holes 1 - 9 -->
     @if ($courseid != "newCourse")
         <div class="flex-container-scorecard">
             <div class="items-info par"> Par </div>  

@@ -36,7 +36,6 @@ class AdvancedStats{
         $eighteenHoleScorecards = $listOfScorecards->filter(function ($scorecard) {
             return $scorecard->hole_ten != null;
         });
-
         #find the lowest score a user got playing eighteen holes
         $bestEighteenHoleScore  = $eighteenHoleScorecards->min('final_score');
         
@@ -83,6 +82,8 @@ class AdvancedStats{
 
         foreach($listOfScorecards as $scorecard)
         {
+            $course = $scorecard->course;
+
             # if the score a user got for the given hole equals the passed value add one to the count
             $scorecard->hole_one - $scorecard->course->par_hole_one == $value ? $count++ : 0;
             $scorecard->hole_two - $scorecard->course->par_hole_two == $value ? $count++ : 0;
@@ -112,12 +113,10 @@ class AdvancedStats{
     public static function HoleinOnes($listOfScorecards)
     {
          $numberofholeinones = 0;
-
          foreach($listOfScorecards as $scorecard)
          {
-            $strokesTakenOnEachHole[] = (new self)->ScorecardArray($scorecard); 
-
-            foreach($strokesTakenOnEachHole as $numberOfStrokes)
+            $shotsTakenOnEachHole[] = (new self)->ScoreOnEachHole($scorecard); 
+            foreach($shotsTakenOnEachHole as $numberOfStrokes)
             {
                 if($numberOfStrokes == 1) 
                 {
@@ -136,26 +135,26 @@ class AdvancedStats{
         
         foreach($listOfScorecards as $scorecard)
         {
-            $courseArray = (new self)->courseArray($scorecard);
-            $scorecardArray = (new self)->ScorecardArray($scorecard);
+            $parOnEachHole = (new self)->ParOnEachHole($scorecard);
+            $scoreOnEachHole = (new self)->ScoreOnEachHole($scorecard);
 
             $x = 0;
-            foreach($courseArray as $par)
+            foreach($parOnEachHole as $par)
             {
                 if($par == 3) 
                 {
                     $numberofpar3s++;
-                    array_push($par3scores,$scorecardArray[$x]);
+                    array_push($par3scores,$scoreOnEachHole[$x]);
                 }
                 elseif($par == 4)
                 {
                     $numberofpar4s++;
-                    array_push($par4scores,$scorecardArray[$x]);
+                    array_push($par4scores,$scoreOnEachHole[$x]);
                 }
                 elseif($par == 5)
                 {
                     $numberofpar5s++;
-                    array_push($par5scores, $scorecardArray[$x]);
+                    array_push($par5scores, $scoreOnEachHole[$x]);
                 }
                 $x++;
             }
@@ -169,7 +168,7 @@ class AdvancedStats{
     }
 
     
-    private function courseArray($scorecard){
+    private function ParOnEachHole($scorecard){
         $course = $scorecard->course;
         return [ 
             $course->par_hole_one, $course->par_hole_two, $course->par_hole_three,
@@ -181,7 +180,7 @@ class AdvancedStats{
         ];
     }
 
-    private static function ScorecardArray($scorecard){
+    private static function ScoreOnEachHole($scorecard){
         return [
             $scorecard->hole_one, $scorecard->hole_two, $scorecard->hole_three,
             $scorecard->hole_four, $scorecard->hole_five, $scorecard->hole_six, 

@@ -2,27 +2,33 @@
 
 h1, h2, h3, p, a, div, fieldset{
     font-family: 'Slabo 27px', serif;
+}
   
-  }
-  
-  a{
-    text-decoration: none;
-  }
-  
-  body{
-    margin: 0;
-    padding: 0;
-  }
-  h1{
-      font-size: 3em;
-      text-align: center;
-      font-weight: 100;
-      padding-bottom: 3px;
-  }
+a{
+  text-decoration: none;
+}
 
-  /******************
-        Buttons
-  *******************/
+body{
+  margin: 0;
+  padding: 0;
+}
+
+h1{
+  font-size: 3em;
+  text-align: center;
+  font-weight: 100;
+  padding-bottom: 3px;
+}
+
+
+h2{
+  text-align: center;
+  font-size: 40px;
+}
+
+/******************
+      Buttons
+*******************/
   .delete{
     background-color: #7a1a1a;
     color: #fff;
@@ -31,23 +37,25 @@ h1, h2, h3, p, a, div, fieldset{
     margin: 30px 0;
     float: right;
     border: none;
+  }
+
+  .submit{
+    background-color: #000;
+    color: #fff;
+    padding: 20px 10px;
+    font-size: 1.5em;
+    float: right;
+    border: none;
     }
 
-    .submit{
-      background-color: #000;
-      color: #fff;
-      padding: 20px 10px;
-      font-size: 1.5em;
-      float: right;
-      border: none;
-      }
 
-  .delete:hover {
+  .submit:hover, .delete:hover{
     -ms-transform: scale(1.1); /* IE 9 */
     -webkit-transform: scale(1.1); /* Safari 3-8 */
-    transform: scale(1.1);
+  transform: scale(1.1);
     cursor: pointer; 
   }
+
 
   /******************
         Header 
@@ -83,13 +91,11 @@ h1, h2, h3, p, a, div, fieldset{
     vertical-align: middle;
       max-height:8vh;
   }
-  header a.logo {
-    font-size: 25px;
-    font-weight: bold;
-  }
   
   header a:hover {
+    /*
     color: rgb(214, 212, 212);
+    */
   }
   
   .header-right {
@@ -98,37 +104,30 @@ h1, h2, h3, p, a, div, fieldset{
   }
   
   
-  
-  
   /********************
       Index Page
   ********************/
-  
-  
   main{
-      width: 95%;
       margin: auto;
       max-width: 1600px;
       margin-top: 50px;
   
   }
+
+  /*Switch to css grid */
   .index-left{
     width: 25%;
     float: left;
   }
+
   .index-right{
+    padding-top: 60px;
     width: 70%;
     float: right;
-  
-  }
-  .viewScorecard-Right{
-    float: right;
-    text-align: right;
   }
   
   .index-stats-box{
     margin: 55px 20px 0 20px;
-    padding: 0 0 20px 0;
     border: 1px solid rgb(158, 158, 158);
     box-shadow: 2px 6px 25px rgba(0, 0, 0, 0.1);
     transition: all 0.3s ease;
@@ -145,13 +144,12 @@ h1, h2, h3, p, a, div, fieldset{
   .index-stats-box .hcp{
     background-color: #06301b;
     color: #fff;
-    padding-top: 10px;
+    padding: 5px;
+    margin: 20px 0;
     font-weight: 800;
     font-size: 28px;
   }
   .index-stats-box .hcp p{
-    padding: 0px;
-    text-align: center;
     margin: 0;
   }
   
@@ -164,7 +162,6 @@ h1, h2, h3, p, a, div, fieldset{
   .index-stats-box a{
     text-decoration: none;
     display: inline-block;
-    margin-top: 20px;
     cursor: pointer;
     padding: 20px;
   }
@@ -175,7 +172,7 @@ h1, h2, h3, p, a, div, fieldset{
     box-shadow: 3px 3px 5px #888888;
     display: flex;
     flex-wrap: nowrap;
-    height: 5EM;
+    height: 5em;
     justify-items: center;
     align-items: center;
     border: 1px solid rgb(100, 100, 100);
@@ -198,120 +195,124 @@ h1, h2, h3, p, a, div, fieldset{
     color: #017dab;
     font-weight: bold;
   }
+
+  .courseName{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex-basis: 100%;
+
+  }
     
-    .flex-container > div {
-      background-color: rgb(255, 255, 255);
-      margin: 1px;
+  .flex-container > div {
+    background-color: rgb(255, 255, 255);
+    margin: 1px;
+    text-align: center;
+    line-height: 40px;
+    font-size: 24px;
+  }
+
+  .whichcourse > .view{
+    flex-basis: 30%;
+  }
+
+  .items{
+      color: rgb(0, 0, 0);
+      flex-basis: 12%;
+  }
+
+  .icon{
+    height: 40px;
+    margin-top: 5px;
+  }
+
+  /* 
+  Pagination 
+  The css classes are premade by listrak
+  use inspect element to see them
+  */
+  .pagination{
       text-align: center;
-      line-height: 40px;
       font-size: 30px;
-    }
-  
-    .courseName{
-        flex-basis: 42%;
-    }
-    .whichcourse > .view{
-      flex-basis: 40%;
-    }
-
-    .items{
-        color: rgb(0, 0, 0);
-        flex-basis: 12%;
-  
-    }
-  
-    .icon{
-      height: 40px;
-      margin-top: 5px;
-    }
-
-    /* 
-    Pagination 
-    The css classes are premade by listrak
-    use inspect element to see them
-    */
-    .pagination{
-        text-align: center;
-        font-size: 30px;
-    }
-   .page-item{
+  }
+   
+  .page-item{
      display: inline;
      padding: 10px;
      color: #000;
-   } 
-   .page-item a{
-     color: #000;
-   }
+  } 
+  
+  .page-item a{
+    color: #000;
+  }
 
+  @media only screen and (max-width: 800px) {
+    .index-left{
+      display:none;
+    }
+    .index-right{
+      width: 100%;
+    }
+    .index-right .test{
+      padding: 20px 0 6px 0;
+    }
+    
+    .flex-container div{
+      font-size: 20px;
+      padding: 10px;
+    }
+    .tees, .holes{
+      display: none;
+    }
+    .courseName{
+      flex-basis: 100%;
+    }
+  }
    
   /***************************
       Number of Holes
   ***************************/
 
-  .holes-img{
-    height: 30vh;
-  }
-
   .holes-width{
     max-width: 1600px;
-    margin: 0 auto;
+    display: flex;
   }
-  
-  h2{
-      text-align: center;
-      font-size: 40px;
-      padding: 20px;
-    }
-    .holes-box{
-      width: 47%;
-      height: 50vh;
-      background-image: url("pages/images/golfbag.png");
-      background-color: #144d30;
-      color: #fff;
-      font-size: 20px;
-      background-position: center;
-      background-repeat: no-repeat;
+
+  .holes-width a{
+    flex: 1;
+  }
+
+  .holes-width img{
+    max-height: 300px;
+  }
+
+  .holes-box{
+    background-color: #144d30;
+    color: #fff;
+    font-size: 20px;
     border: 14px solid #06301b;
-      float: left;
-      text-align: center;
-    }
-    
-  .holes-box input[type=submit]{
-    color: #fff;
-    font-size: 30px;
-    background-color: #06301b;
-    border: none;
+    text-align: center;
   }
-  
-   .right input[type=submit]{
-    color: #fff;
-    font-size: 30px;
-    background-color: #300e1f;
-    border: none;
+
+  .right{
+    background-color: #4d1431;
   }
-  
-    .right{
-      float: right;
-      background-image: url("pages/images/golfcart.png");
-      background-color: #4d1431;
-    }
-    
-    .holes-box input{
-      -webkit-appearance: none;
-      background-color: #fff;
-      padding: 10px 30px;
-      margin:30px 0px 0px 0px;
-    }
-    @media only screen and (max-width: 1000px) {
+ 
+  @media only screen and (max-width: 1000px) {
      
-      .right{
-        float: left;
-      }
-      .holes-box{
-        width: 96%;
+    .holes-box h1{
+      font-size: 22px;
     }
     
+    .holes-box{
+      height: 100%;
+      
     }
+    .holes-box img{
+      width: 100%;
+    }
+  
+  }
   
   
   
@@ -372,6 +373,15 @@ h1, h2, h3, p, a, div, fieldset{
   
   }
   
+  @media only screen and (max-width: 600px) {
+    .flex-container-scorecard {
+      flex-direction: column;
+      width: 32%;
+      float: left;
+      margin: 0 0 30px 0;
+
+    }
+  }
   /***************************
       Course Data
   ***************************/
@@ -408,6 +418,11 @@ h1, h2, h3, p, a, div, fieldset{
     float: left; /* Change to css grids. Then you can remove clear float div */
   }
   
+  .courseName{
+    font-size: 4px;
+
+  }
+
   #searchform{
     text-align: center;
     margin: 40px;
@@ -557,13 +572,31 @@ h1, h2, h3, p, a, div, fieldset{
   font-size: 22px;
   font-weight: bold;
 }
-
+.advancedstats h4{
+  font-size: 1.2em;
+  padding: 0;
+  margin: 20px;
+}
 .advancedstats h3{
-  font-size: 44px;
+  font-size: 2em;
   padding: 0;
   margin: 20px;
 }
 
+.advancedstats .chart{
+  height: 95%;
+}
+
+
+@media only screen and (max-width: 600px) {
+  .advancedstats {
+    grid-template-columns: 100%;
+  }
+  .advancedstats fieldset{
+    padding:0px;
+    margin: 10px 0;
+  }
+}
 
 
 
